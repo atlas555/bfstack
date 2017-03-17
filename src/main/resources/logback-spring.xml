@@ -33,7 +33,7 @@
     
 	<appender name="ACTION" class="ch.qos.logback.core.rolling.RollingFileAppender">
         <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">  
-            <fileNamePattern>${log_dir}/giraffe_action_%d{yyyy-MM-dd}.log</fileNamePattern>
+            <fileNamePattern>${log_dir}/action_%d{yyyy-MM-dd}.log</fileNamePattern>
             <maxHistory>${maxHistory}</maxHistory>  
         </rollingPolicy>
         <encoder>  
@@ -43,7 +43,7 @@
     
     <appender name="ADMIN" class="ch.qos.logback.core.rolling.RollingFileAppender">
         <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">  
-            <fileNamePattern>${log_dir}/giraffe_admin_%d{yyyy-MM-dd}.log</fileNamePattern>
+            <fileNamePattern>${log_dir}/admin_%d{yyyy-MM-dd}.log</fileNamePattern>
             <maxHistory>${maxHistory}</maxHistory>  
         </rollingPolicy>
         <encoder>  
@@ -53,7 +53,7 @@
     
     <appender name="ACCESS" class="ch.qos.logback.core.rolling.RollingFileAppender">
         <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">  
-            <fileNamePattern>${log_dir}/giraffe_access_%d{yyyy-MM-dd}.log</fileNamePattern>
+            <fileNamePattern>${log_dir}/access_%d{yyyy-MM-dd}.log</fileNamePattern>
             <maxHistory>${maxHistory}</maxHistory>  
         </rollingPolicy>
         <encoder>  
@@ -63,7 +63,7 @@
     
     <appender name="PERF" class="ch.qos.logback.core.rolling.RollingFileAppender">
         <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">  
-            <fileNamePattern>${log_dir}/giraffe_perf_%d{yyyy-MM-dd}.log</fileNamePattern>
+            <fileNamePattern>${log_dir}/perf_%d{yyyy-MM-dd}.log</fileNamePattern>
             <maxHistory>${maxHistory}</maxHistory>  
         </rollingPolicy>
         <encoder>  
@@ -71,36 +71,36 @@
         </encoder>  
     </appender>
     
-    <logger name="com.jiazi.giraffe.log.ActionLogPrinter" level="INFO" additivity="false">
+    <logger name="com.bf.blog.log.ActionLogPrinter" level="INFO" additivity="false">
     	<appender-ref ref="ACTION"/>
   	</logger>
   	
-  	<logger name="com.jiazi.giraffe.log.AdminLogPrinter" level="INFO" additivity="false">
+  	<logger name="com.bf.blog.log.AdminLogPrinter" level="INFO" additivity="false">
     	<appender-ref ref="ADMIN"/>
   	</logger>
   	
-  	<logger name="com.jiazi.giraffe.interceptor.AccessLogInterceptor" level="INFO" additivity="false">
+  	<logger name="com.bf.blog.interceptor.AccessLogInterceptor" level="INFO" additivity="false">
     	<appender-ref ref="ACCESS"/>
   	</logger>
   	
-  	<logger name="com.jiazi.giraffe.interceptor.PerformanceLogInterceptor" level="INFO" additivity="false">
+  	<logger name="com.bf.blog.interceptor.PerformanceLogInterceptor" level="INFO" additivity="false">
     	<appender-ref ref="PERF"/>
   	</logger>
   	
-	<logger name="com.jiazi.giraffe.controller" level="DEBUG" additivity="false">
-    	<appender-ref ref="INFO"/>
+	<logger name="com.bf.blog.controller" level="DEBUG" additivity="false">
+    	<appender-ref ref="ACTION"/>
   	</logger>
   	
   	<logger name="org.springframework" level="INFO" additivity="false">
-    	<appender-ref ref="INFO"/>
+    	<appender-ref ref="ACTION"/>
   	</logger>
   	
-  	<logger name="com.jiazi.giraffe.mapper" level="DEBUG" additivity="false">
-    	<appender-ref ref="INFO"/>
+  	<logger name="com.bf.blog.mapper" level="DEBUG" additivity="false">
+    	<appender-ref ref="ACTION"/>
   	</logger>
   	
-  	<logger name="com.jiazi.giraffe" level="DEBUG" additivity="true">
-    	<appender-ref ref="INFO"/>
+  	<logger name="com.bf.blog" level="DEBUG" additivity="true">
+    	<appender-ref ref="ACTION"/>
   	</logger>
 	
 	<root level="INFO">
