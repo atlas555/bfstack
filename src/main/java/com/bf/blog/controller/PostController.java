@@ -5,6 +5,8 @@ import com.bf.blog.enums.ErrorCodeEnum;
 import com.bf.blog.exceptions.BfstackServiceException;
 import com.bf.blog.service.post.IPostService;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import io.swagger.annotations.ApiImplicitParam;
+import io.swagger.annotations.ApiOperation;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -29,8 +31,11 @@ public class PostController {
     @Autowired
     private IPostService postService;
 
+    @ApiOperation(value = "文章详情页", notes = "")
+    @ApiImplicitParam(name = "postId", value = "文章id", required = true, dataType = "Long")
     @RequestMapping(path = "/{postId}", method = {RequestMethod.POST, RequestMethod.GET})
     public ModelAndView detail(@PathVariable(value = "postId") Long postId) {
+
         ModelAndView model = new ModelAndView();
         try {
             Post post = postService.getArticleById(postId);
