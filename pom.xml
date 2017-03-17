@@ -18,6 +18,16 @@
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-web</artifactId>
+            <exclusions>
+                <exclusion>
+                    <artifactId>log4j-over-slf4j</artifactId>
+                    <groupId>org.slf4j</groupId>
+                </exclusion>
+                <exclusion>
+                    <groupId>org.springframework.boot</groupId>
+                    <artifactId>spring-boot-starter-tomcat</artifactId>
+                </exclusion>
+            </exclusions>
 		</dependency>
 
         <!-- mybatis -->
@@ -69,12 +79,12 @@
             <groupId>org.apache.tomcat.embed</groupId>
             <artifactId>tomcat-embed-jasper</artifactId>
             <scope>provided</scope>
-        </dependency>
-        <dependency>
-            <groupId>org.apache.geronimo.ext.tomcat</groupId>
-            <artifactId>shared</artifactId>
-            <version>7.0.39.2</version>
-        </dependency>
+        </dependency>ll
+        <!--<dependency>-->
+            <!--<groupId>org.apache.geronimo.ext.tomcat</groupId>-->
+            <!--<artifactId>shared</artifactId>-->
+            <!--<version>7.0.39.2</version>-->
+        <!--</dependency>-->
 
         <dependency>
             <groupId>org.apache.commons</groupId>
@@ -110,10 +120,13 @@
                     <target>1.8</target>
                 </configuration>
             </plugin>
-			<!--<plugin>-->
-				<!--<groupId>org.springframework.boot</groupId>-->
-				<!--<artifactId>spring-boot-maven-plugin</artifactId>-->
-			<!--</plugin>-->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-war-plugin</artifactId>
+                <configuration>
+                    <warName>bfstack</warName>
+                </configuration>
+            </plugin>
 		</plugins>
 	</build>
 
