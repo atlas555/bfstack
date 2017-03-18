@@ -32,7 +32,6 @@ public class PostController {
     private IPostService postService;
 
     @ApiOperation(value = "文章详情页", notes = "")
-    @ApiImplicitParam(name = "postId", value = "文章id", required = true, dataType = "Long")
     @RequestMapping(path = "/{postId}", method = {RequestMethod.POST, RequestMethod.GET})
     public ModelAndView detail(@PathVariable(value = "postId") Long postId) {
 
