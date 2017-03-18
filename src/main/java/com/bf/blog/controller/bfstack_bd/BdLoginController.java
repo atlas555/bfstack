@@ -6,7 +6,6 @@ import com.bf.blog.exceptions.BfstackServiceException;
 import com.bf.blog.interceptor.ThreadLocalContext;
 import com.bf.blog.requestParam.MailLoginDO;
 import com.bf.blog.service.user.IUserService;
-
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,10 +18,10 @@ import javax.servlet.http.HttpServletResponse;
  * Created by zhubin on 2017/1/14.
  */
 @RestController
-@RequestMapping(path="/api")
-public class LoginController {
+@RequestMapping(path="/super")
+public class BdLoginController {
 
-    private static final Logger logger = LoggerFactory.getLogger(LoginController.class);
+    private static final Logger logger = LoggerFactory.getLogger(BdLoginController.class);
 
     @Autowired
     private IUserService userService;
@@ -36,7 +35,6 @@ public class LoginController {
         cookie.setPath("/");
         response.addCookie(cookie);
         ResponseData<String> rd = ResponseData.getOKResult(token);
-//        LogParas.create("0", UserAction.LOGIN_BY_MAIL, "").printToActionLog();
         return rd;
     }
 
@@ -50,7 +48,13 @@ public class LoginController {
         cookie.setPath("/");
         response.addCookie(cookie);
         ResponseData<Boolean> rd = ResponseData.getOKResult(userService.logout(ThreadLocalContext.getCurrentUser()));
-//        LogParas.create("0", UserAction.LOGIN_BY_MAIL, "").printToActionLog();
         return rd;
+    }
+
+    @CrossOrigin
+    @LoginRequied
+    @RequestMapping(value = "/detail", method = {RequestMethod.POST })
+    public ResponseData detail() {
+        return ResponseData.getOKResult(ThreadLocalContext.getCurrentUser());
     }
 }

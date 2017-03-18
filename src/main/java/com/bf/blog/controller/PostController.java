@@ -5,7 +5,6 @@ import com.bf.blog.enums.ErrorCodeEnum;
 import com.bf.blog.exceptions.BfstackServiceException;
 import com.bf.blog.service.post.IPostService;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import io.swagger.annotations.ApiImplicitParam;
 import io.swagger.annotations.ApiOperation;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -37,7 +36,7 @@ public class PostController {
 
         ModelAndView model = new ModelAndView();
         try {
-            Post post = postService.getArticleById(postId);
+            Post post = postService.getPostById(postId);
             model.addObject("post", post);
         } catch (BfstackServiceException e) {
             log.error(ErrorCodeEnum.GET_ARTICLE_FAILED.getErrorMsg(), e);
