@@ -1,18 +1,19 @@
 package com.bf.blog.controller;
 
-import com.bf.blog.domain.Post;
 import com.bf.blog.enums.ErrorCodeEnum;
 import com.bf.blog.exceptions.BfstackServiceException;
 import com.bf.blog.service.post.IPostService;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import io.swagger.annotations.ApiOperation;
-import lombok.extern.slf4j.Slf4j;
+
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RestController;
-import org.springframework.web.servlet.ModelAndView;
+
+import io.swagger.annotations.ApiOperation;
+import lombok.extern.slf4j.Slf4j;
 
 /**
  * @Title:
@@ -20,7 +21,7 @@ import org.springframework.web.servlet.ModelAndView;
  * @Author zhangxiaolong
  * @Date 2015-10-27 14:05.
  */
-@RestController
+@Controller
 @RequestMapping("/post")
 @Slf4j
 public class PostController {
@@ -32,17 +33,13 @@ public class PostController {
 
     @ApiOperation(value = "文章详情页", notes = "")
     @RequestMapping(path = "/{postId}", method = {RequestMethod.POST, RequestMethod.GET})
-    public ModelAndView detail(@PathVariable(value = "postId") Long postId) {
-
-        ModelAndView model = new ModelAndView();
+    public String detail(ModelMap map, @PathVariable(value = "postId") Long postId) {
         try {
-            Post post = postService.getPostById(postId);
-            model.addObject("post", post);
+            map.addAttribute("post", postService.getPostById(postId));
         } catch (BfstackServiceException e) {
             log.error(ErrorCodeEnum.GET_ARTICLE_FAILED.getErrorMsg(), e);
         }
 
-        model.setViewName("post");
-        return model;
+        return "post";
     }
 }

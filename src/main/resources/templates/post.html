@@ -1,13 +1,10 @@
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<html>
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="Content-type" content="text/html;charset=utf-8"/>
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head lang="en">
     <title>bfstack</title>
-    <link rel="stylesheet" href="../style/css/theme.css"/>
-    <link rel="stylesheet" href="../style/css/main.css"/>
-    <script type="text/javascript" src="https://img1.cache.netease.com/f2e/tie/yun/sdk/loader.js"></script>
-    <script type="text/javascript" src="../style/js/main.js"></script>
+    <link rel="stylesheet" type="text/css" href="/static/css/theme.css"/>
+    <link rel="stylesheet" type="text/css" href="/static/css/main.css"/>
+    <script type="text/javascript" src="/static/js/main.js"></script>
 </head>
 <body>
 <header>
@@ -25,24 +22,22 @@
 </nav>
 
 <section>
-    <label>${post.title}</label>
+    <label th:text="${post.title}">title</label>
+
     <!-- 文章内容 -->
-    <article>
-        ${post.content}
-    </article>
+    <article th:utext="${post.content}">content</article>
 
     <div id="cloud-tie-wrapper" class="cloud-tie-wrapper"></div>
-    <script>
+    <script th:inline="javascript">
         var cloudTieConfig = {
             url: document.location.href,
-            sourceId: ${post.id},
+            sourceId: [[${post.id}]],
             productKey: "048ce60f5bfa4489a79078e48af06fe5",
             target: "cloud-tie-wrapper"
         };
     </script>
+    <script src="https://img1.cache.netease.com/f2e/tie/yun/sdk/loader.js"></script>
 </section>
-<footer>
-    bfstack welcome
-</footer>
+<div th:include="footer::copyright"></div>
 </body>
 </html>
