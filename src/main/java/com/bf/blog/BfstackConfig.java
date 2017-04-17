@@ -5,11 +5,9 @@ import com.bf.blog.interceptor.AuthenticationInterceptor;
 import com.bf.blog.interceptor.PerformanceLogInterceptor;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.SerializationFeature;
-
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
-import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter;
 
 /**
@@ -42,11 +40,5 @@ public class BfstackConfig extends WebMvcConfigurerAdapter {
         registry.addInterceptor(perfLogInterceptor());
         registry.addInterceptor(authInterceptor());
         registry.addInterceptor(accessLogInterceptor());
-    }
-
-    @Override
-    public void addResourceHandlers(ResourceHandlerRegistry registry) {
-        registry.addResourceHandler("/style/**")
-                .addResourceLocations("classpath:/style/");
     }
 }
