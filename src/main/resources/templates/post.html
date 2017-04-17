@@ -12,7 +12,14 @@
     <h1>bfstack</h1>
 </header>
 <nav>
-    <div th:include="nav::hot_post"></div>
+    <div id="hot-news-wrap"></div>
+    <script>var yunModuleEnv = true;</script>
+    <script src="https://img1.cache.netease.com/f2e/tie/yun/sdk/loader.js"></script>
+    <script>
+        var yunTieProductKey = "048ce60f5bfa4489a79078e48af06fe5";
+        var yunHotNewsWrap = "hot-news-wrap";   //放置的DOM节点ID 或 样式类
+        Tie.loader("aHR0cHM6Ly9hcGkuZ2VudGllLjE2My5jb20vZXh0ZW5kL2hvdF9uZXdzX3NjcmlwdC5odG1s", true);
+    </script>
 </nav>
 
 <section>
@@ -21,7 +28,16 @@
     <!-- 文章内容 -->
     <article th:utext="${post.content}">content</article>
 
-    <div th:include="comment::comment"></div>
+    <div id="cloud-tie-wrapper" class="cloud-tie-wrapper"></div>
+    <script th:inline="javascript">
+        var cloudTieConfig = {
+            url: document.location.href,
+            sourceId: [[${post.id}]],
+            productKey: "048ce60f5bfa4489a79078e48af06fe5",
+            target: "cloud-tie-wrapper"
+        };
+    </script>
+    <script src="https://img1.cache.netease.com/f2e/tie/yun/sdk/loader.js"></script>
 </section>
 <div th:include="footer::copyright"></div>
 </body>
