@@ -5,11 +5,10 @@
 </head>
 <body>
 <div class="divOut">
-    <div class="top"></div>
     <div class="bottom">
         <!-- 中间文章详情 -->
-        <div id="main" style="width:755px;margin-left: 0;">
-            <label class="article-title">${post.title}/></label>
+        <div id="main" style="width:755px;margin-left: 20%;">
+            <label class="article-title" style="font-style: italic;font-size: 24px;">${post.title}></label>
             <!-- 文章内容 -->
             <article>
                 ${post.content}
@@ -26,9 +25,6 @@
         };
     </script>
     <script src="https://img1.cache.netease.com/f2e/tie/yun/sdk/loader.js"></script>
-    <div class="page-bottom">
-        © 2017 bfstack.com All Rights Reserved
-    </div>
 </div>
 </body>
 </html>
