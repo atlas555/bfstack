@@ -13,8 +13,9 @@
             <article>
                 ${post.content}
             </article>
+
+            <div id="cloud-tie-wrapper" class="cloud-tie-wrapper"></div>
         </div>
-        <div id="cloud-tie-wrapper" class="cloud-tie-wrapper"></div>
         <script>
             var cloudTieConfig = {
                 url: document.location.href,
