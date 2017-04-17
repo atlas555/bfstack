@@ -1,6 +1,7 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
+    <meta http-equiv='Content-Type' content="text/html"/>
     <title>bfstack</title>
     <style>
         header {
@@ -10,54 +11,44 @@
             padding:5px;
         }
         nav {
-            line-height:30px;
+            line-height:15px;
             background-color:#eeeeee;
-            height:300px;
-            width:100px;
-            float:left;
+            width:30%;
+            float:right;
             padding:5px;
         }
         section {
-            width:350px;
+            width:65%;
             float:left;
-            padding:10px;
-        }
-        footer {
-            background-color:black;
-            color:white;
-            clear:both;
-            text-align:center;
-            padding:5px;
+            padding:25px;
         }
     </style>
 </head>
 <body>
-<div>
-    <header>
-        <h1>bfstack</h1>
-    </header>
-    <nav style="float: right;width: 30%">
-        <div id="hot-news-wrap"></div>
-        <script>var yunModuleEnv = true;</script>
-        <script src="https://img1.cache.netease.com/f2e/tie/yun/sdk/loader.js"></script>
-        <script>
-            var yunTieProductKey = "048ce60f5bfa4489a79078e48af06fe5";
-            var yunHotNewsWrap = "hot-news-wrap";   //放置的DOM节点ID 或 样式类
-            Tie.loader("aHR0cHM6Ly9hcGkuZ2VudGllLjE2My5jb20vZXh0ZW5kL2hvdF9uZXdzX3NjcmlwdC5odG1s", true);
-        </script>
-    </nav>
+<header>
+    <h1>bfstack</h1>
+</header>
+<nav>
+    <div id="hot-news-wrap"></div>
+    <script>var yunModuleEnv = true;</script>
+    <script src="https://img1.cache.netease.com/f2e/tie/yun/sdk/loader.js"></script>
+    <script>
+        var yunTieProductKey = "048ce60f5bfa4489a79078e48af06fe5";
+        var yunHotNewsWrap = "hot-news-wrap";   //放置的DOM节点ID 或 样式类
+        Tie.loader("aHR0cHM6Ly9hcGkuZ2VudGllLjE2My5jb20vZXh0ZW5kL2hvdF9uZXdzX3NjcmlwdC5odG1s", true);
+    </script>
+</nav>
 
-    <section style="width: 65%;padding: 25px">
-        <!-- 中间文章详情 -->
-        <div>
-            <label class="article-title" style="font-style: italic;font-size: 24px;">${post.title}</label>
-            <!-- 文章内容 -->
-            <article>
-                ${post.content}
-            </article>
+<section>
+    <!-- 中间文章详情 -->
+    <div>
+        <label class="article-title" style="font-style: italic;font-size: 24px;">${post.title}</label>
+        <!-- 文章内容 -->
+        <article>
+            ${post.content}
+        </article>
 
-            <div id="cloud-tie-wrapper" class="cloud-tie-wrapper"></div>
-        </div>
+        <div id="cloud-tie-wrapper" class="cloud-tie-wrapper"></div>
         <script>
             var cloudTieConfig = {
                 url: document.location.href,
@@ -67,10 +58,10 @@
             };
         </script>
         <script src="https://img1.cache.netease.com/f2e/tie/yun/sdk/loader.js"></script>
-    </section>
-    <footer>
-        Copyright bfstack.com
-    </footer>
-</div>
+    </div>
+</section>
+<footer>
+    Copyright bfstack.com
+</footer>
 </body>
 </html>
